@@ -1,0 +1,1 @@
+cp environment /etc/environment
