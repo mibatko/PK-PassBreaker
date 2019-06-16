@@ -1,0 +1,5 @@
+SYSTEMC_HOME="/usr/local/systemc-2.3.3/"
+PVM_ROOT=/usr/lib/pvm3
+PVM_DPATH=$PVM_ROOT/lib/pvmd
+MANPATH=$MANPATH:$PVM_ROOT/man
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PVM_ROOT/lib:$PVM_ROOT/include"
