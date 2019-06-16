@@ -83,5 +83,5 @@ int main(int argc, char* argv[])
    clock_gettime(CLOCK_MONOTONIC, &end);
    uint64_t timeElapsed = timespecDiff(&end, &start);
    double time= timeElapsed / 1000000000.0;
-   std::cout << "Time elapsed: " << time << " ms" << std::endl;
+   std::cout << "Time elapsed: " << time << " s" << std::endl;
 }
