@@ -49,23 +49,6 @@ int main(int argc, char* argv[])
 
    std::cout << "Encrypted pass: " << encryptedPass << std::endl;
 
-   // bool stop = false;
-   // for(guess[0] = ASCII_0; guess[0] <= ASCII_z && !stop; guess[0]++) {
-   //    for(guess[1] = ASCII_0; guess[1] <= ASCII_z && !stop; guess[1]++) {
-   //       //for(guess[2] = ASCII_0; guess[2] <= ASCII_z && !stop; guess[2]++) {
-   //          if(strcmp(encryptedPass, crypt(guess, "GG")) == 0) {
-   //             stop = true;
-   //             strcpy(answer,guess);
-   //             std::cout << "Guess: " << guess << std::endl;
-   //             std::cout << "Cmp of: " << crypt(guess, salt) << " with " << encryptedPass << std::endl;
-   //          }
-   //       //}
-   //    }
-   // }
-
-   // std::cout << "answer: " << answer << std::endl;
-
-
    mytid = pvm_mytid();
 
    pvm_spawn((char *)"worker", (char **)0, PvmTaskDefault, (char *)"", numberOfWorkers, task_ids);

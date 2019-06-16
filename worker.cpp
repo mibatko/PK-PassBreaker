@@ -65,9 +65,9 @@ int main(int argc, const char* argv[])
       }
    }
 
-   pvm_initsend(PvmDataRaw);
-   pvm_pkstr((char*)"Fail");
-   pvm_send(master, MSG_SEND);
+   // pvm_initsend(PvmDataRaw);
+   // pvm_pkstr((char*)"Fail");
+   // pvm_send(master, MSG_SEND);
 
    pvm_exit();
 }
