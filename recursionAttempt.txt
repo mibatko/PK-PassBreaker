@@ -1,0 +1,40 @@
+void bruteForce(int length) {
+   for(guess[length - 1] = ASCII_EX + mytid % numberOfWorkers; guess[length - 1] <= ASCII_TILDE && !stop; guess[length - 1]+=numberOfWorkers) {
+      for(guess[2] = ASCII_EX; guess[2] <= ASCII_TILDE && !stop; guess[2]++) {
+         for(guess[1] = ASCII_EX; guess[1] <= ASCII_TILDE && !stop; guess[1]++) {
+            for(guess[0] = ASCII_EX; guess[0] <= ASCII_TILDE && !stop; guess[0]++) {
+               if(strcmp(hash, crypt(guess, "GG")) == 0) {
+                  stop = true;
+                  pvm_initsend(PvmDataRaw);
+                  pvm_pkstr(guess);
+                  pvm_send(master, MSG_SEND);
+               }
+            }
+         }
+      }
+   }
+}
+
+void bruteForce(int mytid, int numberOfWorkers, int master, int length) {
+   if(length == 1) {
+      for(guess[0] = ASCII_EX + mytid % numberOfWorkers; guess[0] <= ASCII_TILDE && !stop; guess[0]+=numberOfWorkers) {
+         if(strcmp(hash, crypt(guess, "GG")) == 0) {
+            stop = true;
+            pvm_initsend(PvmDataRaw);
+            pvm_pkstr(guess);
+            pvm_send(master, MSG_SEND);
+         }
+      }
+   }
+   else {
+      for(guess[length - 1] = ASCII_EX; guess[length - 1] <= ASCII_TILDE && !stop; guess[length - 1]++) {
+         bruteForce(mytid, numberOfWorkers, master, length - 1);
+         
+         if(mytid % numberOfWorkers == 1) {
+         pvm_initsend(PvmDataRaw);
+         pvm_pkstr(guess);
+         pvm_send(master, MSG_SEND);
+         }
+      }
+   }
+}
